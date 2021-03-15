@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <!--
+<link rel="stylesheet" type="text/css" href="../css/issStyle1.css">
+<script type="text/javascript" src="../css/issStyle.js"></script>
+-->
+<style type="text/css">
+body
+{
+    margin-left:  30px;
+    margin-right: 30px;
+};
+
+P
+{
+    font-family: Tahoma;
+    font-size: 10pt;
+};
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+	font-size: 93%;
+}
+
+a:hover {
+    background-color: #cccccc;
+}
+
+
+hr {
+    clear: both;
+    height: 1px;
+    color: #242424;
+    background-color: transparent;
+}
+
+h1, h2, h3 {
+    color: #242424;
+    clear: left;
+    font: 100% Tahoma, Helvetica, Arial, sans-serif;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+top {
+	width: 100%;
+}
+
+
+#i {
+    color: #ff1010;
+}
+tt{
+	font-family: "Arial";
+    font-size: 90%;
+	color: #006600;
+}
+em{
+	font-family: "Arial";
+    font-size: 80%;
+	font-weight: bold;
+	border-style:solid;
+	border-color: #abe876;
+    color: #1632cc;
+}
+bc{
+	font-family: "Arial";
+	font-size: 90%;
+	font-weight: bold;
+    color: #990000;
+	background-color: #fcf8c7;
+}
+ks{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #0000CD	;
+	font-size: 90%;
+}
+kc{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #008000	;
+	font-size: 90%;
+}
+pre{
+	font-family: "Consolas";
+	font-size: 85%;
+	background-color: #f5f5f5;
+	border: 1.5px solid silver;
+	padding: 5px;
+}
+m{
+	font-family: "Helvetica";
+	line-height: 100%;
+ 	font-size: 75%;
+}
+div.body{
+	 
+    font-size: 18px;
+}
+k{
+    color: #990000;
+	font-weight: bold;
+	font-size: 90%;
+}
+h1 {
+    font-size: 150%;
+    background-color: #b2c0ff;
+	padding: 10px;
+}
+
+h2 {
+    background-color: #9ed8ff;
+    font-size: 130%;
+}
+
+h3 {
+	background-color: #e6ccff;
+    font-size: 100%;
+}
+h4 {
+    background-color: #ccffcc;
+    font-size: 100%;
+	width: 95%;
+	border-radius: 5px;
+	padding: 2px;
+}
+h5 {
+    background-color: #d5ffb0;
+    font-size: 100%;
+
+}
+div.req{
+	background-color: #d9ffb3;
+    font-size: 18px;
+	width: 700px;
+    border: 3px solid green;
+    padding: 15px;
+    margin: 10px;
+}
+div.remark{
+	background-color: #E3F2FD;
+    border: 1.5px solid #d5f2ed;
+    padding: 15px;
+    margin: 10px;
+	border-radius: 25px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+ol, ul, li {
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+img {
+	border: 1.5px solid #d5f2ed
+
+}
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+}
+
+div.wrapdesc{
+	width: 90%;
+	margin: auto;
+}
+
+div.imagedesc{
+	width: 85%;
+	margin: auto;
+}
+</style>
+    
+<head>
+   
+<title>CautiousExplorer</title></head>
+    
+<body>
+<div id="top">
+<h1>Lab ISS | the project cautiousExplorer<font size="5"></font> </h1>
+</div>  
+
+<div class="body"> 
+<h2>Introduction</h2>
+This case-study starts to deal with the design and development of proactive/reactive software systems that use aynchronous exchange of information.
+ 
+<h2>Requirements</h2>
+
+ 
+<div class="remark">
+Design and build a software system that allow the robot described in 
+<a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html" target="lab"><em>VirtualRobot2021.html</em></a>
+ to exibit the following behaviour:
+<ul>
+<li>the robot lives in a closed environment, delimited by walls that includes one or more devices (e.g. sonar) able to detect its presence;</li>
+<li>the robot has a <ks>den</ks> for refuge, located near a wall;</li>
+<li>the robot works as an <i>explorer of the environment</i>. Starting from its <ks>den</ks>,  the robot moves
+(either randomly or - preferably - in a more organized way) with the aim to find the fixed obstacles around the <ks>den</ks>. 
+The presence of mobile obstacles is (at the moment) excluded;</li>
+<li>since the robot is <i>'cautious'</i>,  it  returns immediately to the <ks>den</ks> as soon as it finds an obstacle.
+Optionally, it should also return to the <ks>den</ks> when a sonar detects its presence;
+</li>
+<li>the robot should remember the position of the obstacles found, by creating a sort of 'mental map' of the environment.</li>
+</ul>
+</div>
+
+ <h3>Delivery</h3>
+The customer requires to receive the completion of the analysis (of the requirments and of the problem)  by <k>Friday 12 March</k>. 
+Hopefully, he/she expects to receive also (in the same document) some detail about the project.<br/>
+The name of the file (in pdf) should be:
+<pre>
+cognome_nome_ce.pdf
+</pre>
+
+<h2>Requirement analysis</h2>
+The <v>interation with the client</v> made it clear that he associates the following meaning with nouns:
+<ul>
+<li> <ks>robot</ks>: a device capable of moving by receiving commands by the network as reported in <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html" target="lab"><em>VirtualRobot2021.html</em></a> </li>
+<li> <ks>closed enviroment</ks>: space surrounded by walls with no way out</li>
+<li> <ks>den</ks>: the place where the robot starts and then returns</li>
+<li> <ks>walls</ks>: constitute the perimeter of the environment</li>
+<li> <ks>obstacles</ks>: any element material or non-material which opposes and constitutes an impediment to an action or an activity or a movement</li>
+<li> <ks>cautious</ks>: it means that the robot has to go back to his den</li>
+For the actions(verbs):
+<li> <ks>detects</ks>: the robot passed in front of the sonar </li>
+</ul>
+
+<h3>A first <a href="https://en.wikipedia.org/wiki/User_story" target="web">user story</a></h3>
+ <table style="width:98%">
+<tbody>	
+<tr>
+<td style="width:60%" >
+ 
+As a user, I place the robot in its det (facing back to the wall) 
+and then activate a system that sends movement commands to the robot (via wifi network). 
+<br/>
+As a user I cannot interrupt the execution: the system must terminate autonomously, once the task is done.
+<br/><br/>
+At the end of the execution of the system, I expect that the robot has found an obstacle and returned to its det.
+ 
+</td>
+<td><center><img src="./img/cautiousExplorer.png" alt="TestPlan0" width="60%" ></center>
+</td>
+</tr>
+ </tbody>
+</table>
+
+
+
+ 
+
+</div>
+
+<h2>Problem analysis</h2>
+We highlight that:
+<ol>
+<li>In the <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html#commands" target="web">VirtualRobot2021.html: commands</a> the customer states
+that the robot can receive move commands in two different ways:
+	<ul>
+	<li>by sending messages to the port <tt>8090</tt> using  <ks>HTTP POST</ks> </li>
+	<li>by sending messages to the port <tt>8091</tt> using a <ks>websocket</ks> </li>
+	</ul>
+</li>
+ 
+<li> With respect to the technological level, there are many libraries in many programming languages that support the
+required protcols. 
+<div class="remark">
+However, the problem does introduce an <k>abstraction gap at the conceptual level</k>,
+since <kc>the required logical interaction</kc> is not always a <em>request-response</em>, <b>regardless of the technology</b> used to implement
+the interaction with the robot.
+</div>
+</li>
+ 
+</ol>
+
+
+<h3>Logical architecture</h3>
+ 
+
+<table style="width:98%">
+<tbody>	
+<tr>
+<td style="width:60%">
+We must design and build a <k>distributed system</k> with two software macro-components:
+	<ol>
+	<li>the <a href="VirtualRobot2021.html" target="web"><ks>VirtualRobot</ks></a>, given by the customer</li>
+	<li>our <ks>cautiousExplorer</ks> application that interacts with the robot with a <i>request-response</i> pattern</li>
+	</ol>
+A first scheme of the logical architecture  of the systems can be defined as shown in the figure
+(for the meaning of the symbols, see the <a href="./img/legenda.png" target="web">legenda</a>)
+
+</td>
+<td>  <center><img src="./img/logicArch1.png" alt="logicArch0" width="98%" ></center>
+</td>
+</tr>
+</tbody>
+</table>
+
+<br/><br/>
+We observe that:
+<ul>
+<li>The specification of the exact 'nature' of our <em>CautiousExplorer</em> software is left to the designer. 
+However, we can say here that is it <b>not a database, or a function or an object</b>.  
+<li>To make our <em>CautiousExplorer</em> software <k>as much as possibile independent</k> from the undelying communication protocols,
+the designer could make reference to proper <a href="https://it.wikipedia.org/wiki/Design_pattern" target="web"><em>design pattern</em></a>, 
+e.g.
+<a href="https://it.wikipedia.org/wiki/Adapter_pattern" target="web"><ks>Adapter</ks></a>, 
+<a href="https://it.wikipedia.org/wiki/Bridge_pattern" target="web"><ks>Bridge</ks></a>,
+<a href="https://it.wikipedia.org/wiki/Fa%C3%A7ade_pattern" target="web"><ks>Facade</ks></a>.
+ </li>
+<li>
+It is quite easy to define <k>what the robot has to do</k>  the meet the requirements:
+<pre>
+the robot start in the DEN position, direction= back to the wall:
+	1) send to the robot the request to execute the command <kc>moveForward</kc> 
+	and continue to do it, until the answer of the request becomes 'false' 
+	or until the sonar does not detect the presence of the robot and starts to sound
+	2) send to the robot the request to execute the <kc>moveBackward</kc> to the den
+</pre>
+</li>
+
+</ul> 
+ 
+ 
+
+<h2>Test plans</h2> 
+To check that the application fulfills the requirements, we could keep track of the moves done by the robot.
+For example:
+
+<pre>
+...
+let us define <kc>String moves="";</kc> 
+	1) send to the robot the request to execute the command <kc>moveForward</kc>;
+	if the answer is 'true' <ks>append the symbol "w"</ks> to <kc>moves</kc> and continue to do 1); 
+	2) when the answer of the request becomes 'false',
+	send to the robot the request to execute the command <kc>moveBackward</kc> and <ks>append the symbol "b"</ks> to <kc>moves</kc>
+	and continue to do 2) until the robot returns to the den
+</pre>
+
+In this way, when the application terminates, the string <kc>moves</kc> should have the typical structure of a 
+<a href="https://en.wikipedia.org/wiki/Regular_expression" target="web"><em>regular expression</em></a>,
+that can be easily checked with a TestUnit software:
+<pre><kc>moves</kc>: <ks>"w*b*"</ks>     <kc><ks>*</ks> : repetion N times(N>=0) </pre>
+Moreover the number of <ks>w</ks> must correspond to the number of  <ks>b</ks> in order to verify the requirements.
+
+
+</li> 
+
+
+<h2>Project</h2> 
+<table style="width:98%">
+<tbody>	
+<tr>
+<td>
+<h3>Nature of the application component</h3>
+The <em>CautiousExplorer</em> application is a <k>conventional Java program</k>, represented in the figure as an object with an internal thread.
+<br/>
+Our CautiousExplorer application should:
+<ul>
+<li>send a <em>request</em> to WEnv for the execution of a robot-move command</li>
+<li>handle the <em>reply</em> sent by WEnv to the robot-move command request</li>
+<li>handle the information possibly sent by WEnv to boundaryWalk as a <em>dispatch</em> carrying the distance detected by the sonar</li>
+</ul>
+
+</td>
+<td style="width:50%" >
+
+<center><img src="./img/larch1.png" alt="larch1" width="98%" ></center>
+ 
+</td>
+</tr>
+<tr>
+<td>
+<h3>Zoom in the CautiousExplorer architecture</h3>
+The code of the program is structured according to a conventional <em>layered architecture</em>,
+which is the simplest form of software architectural pattern, where the components are organized in <i>horizontal layers</i>.
+<br/>
+We introduce the following layers:<br/><br/>
+<ol>
+<li><k>Application layer</k>:  
+<br/>
+<br/><br/>
+</li>
+<li><k>RobotSupport layer</k>: this layer provides a support that helps the design and the implementation of robot-based applications. 
+
+<br/><br/>
+
+</li>
+<li><k>Communication layer</k>: this layer provides a support for using the protocols required by the application.
+
+<br/><br/>
+</li>
+</ol>
+</td>
+<td style="width:50%" >
+
+<center><img src="./img/projectArch0Zoom.png" alt="projectArch0Zoom" width="98%" ></center>
+</td>
+
+ </tbody>
+</table>
+ 
+</div>
+
+<h2>Testing</h2> 
+ 
+
+<h2>Deployment</h2> 
+
+ 
+<h2>Maintenance</h2> 
+ 
+<!-- USEFUL
+<table style="width:100%" border="1">
+<tr>
+<td style="width:50%">
+</td>
+<td></td>
+</tr>
+</table>
+-->
+	      	
+<br/><br/> 	
+</div>  
+
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By Antonio Franzese email: antonio.franzese4@studio.unibo.it  
+<img src="./img/me.jpeg" alt="mbot" width="15%" height="15%">
+</div> 
+</body>
+</html>
